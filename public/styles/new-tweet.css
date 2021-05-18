@@ -1,7 +1,3 @@
-/* section {
-  display: flex;
-} */
-
 #tweet-text {
   display: flex;
   width: 100%;
@@ -21,7 +17,51 @@ button {
   margin-top: 1em
 }
 
+
 .counter {
   font-family: 'Bungee';
 }
 
+.main-header {
+  border: solid;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.box-top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.underline {
+  border: 0;
+  border-top: solid 3px;
+  color: #545149;
+  margin-bottom: 5px;
+}
+
+.timeline {
+  font-size: small;
+}
+
+.status {
+  margin-bottom: 10px;
+  font-size: small;
+  color: blue;
+}
+
+i.status:hover {
+  color: gold;
+}
+
+.main-header:hover {
+  box-shadow: 3px 5px #d4d4d4;
+}
