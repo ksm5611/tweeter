@@ -1,13 +1,16 @@
 $(document).ready(function() {
   // --- our code goes here ---
-  console.log("DOM");
-  
-  $("#btn").on('click', function() {
-    console.log(this); //The this keyword is a reference to the button
-  });
-  
-  $("#btn").on('click', () => {
-    console.log(this); //The this keyword here refers to something else!
+  $("#tweet-text").on("input", function() {
+    const maxVal = 140;
+    const textVal = $(this).val().length;
+    let counter = maxVal - textVal;
+
+    if (textVal > maxVal) {
+      counter = -(textVal - maxVal);
+      $('.counter').css('color', 'red');
+    };
+
+    $('.counter').val(counter);
   });
 
 });
