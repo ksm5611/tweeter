@@ -1,0 +1,27 @@
+/* section {
+  display: flex;
+} */
+
+#tweet-text {
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid;
+  /* margin-top: 32px; */
+}
+
+button {
+  font-family: 'Bungee';
+}
+
+.space {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em
+}
+
+.counter {
+  font-family: 'Bungee';
+}
+

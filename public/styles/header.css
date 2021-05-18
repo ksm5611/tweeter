@@ -1,0 +1,14 @@
+header {
+  height: 400px;
+  width: 100%;
+  background-color: #61aba5;
+  background-image: url("https://www.transparenttextures.com/patterns/foggy-birds.png");
+}
+
+.imgTag {
+  display: flex;
+  justify-content: center;
+
+}
+
+
