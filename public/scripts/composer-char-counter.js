@@ -8,7 +8,9 @@ $(document).ready(function() {
     if (textVal > maxVal) {
       counter = -(textVal - maxVal);
       $('.counter').css('color', 'red');
-    };
+    } else {
+      $('.counter').css('color', '#545149');
+    }
 
     $('.counter').val(counter);
   });
