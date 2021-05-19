@@ -58,10 +58,28 @@ button {
   color: blue;
 }
 
+#handler {
+  opacity: 50%;
+}
+
 i.status:hover {
   color: gold;
 }
 
 .main-header:hover {
   box-shadow: 3px 5px #d4d4d4;
+}
+
+.main-header:hover #handler {
+  opacity: 100%;
+}
+
+.fixed-nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.header-container {
+  margin-top: 120px;
 }
