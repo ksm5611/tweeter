@@ -65,18 +65,32 @@ $(document).ready(function() {
     tweets.forEach((tweet) => {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
+      // if (time passed) {
+      //   will remove history
+      // }
     });
   };
   
-  renderTweets(tweetData);
+  // renderTweets(tweetData);
+  const getTweetsAndRender = function() {
+    $.ajax('http://localhost:8080/tweets', {method: 'GET'})
+      .then((response) => {
+      // console.log(response)
+        renderTweets(response);
+      });
+  };
 
-  $('#form-submit').submit(function(event) {
+  getTweetsAndRender();
+
+  $('#form-submit').on('submit', function(event) {
     event.preventDefault();
-    console.log($(this).serialize());
-    // XMLHttpRequest();
+    // console.log($(this).serialize());
+    $.ajax('http://localhost:8080/tweets', {method: 'POST', data: $(this).serialize()})
+      .then(() => {
+        $('#form-submit')[0].reset();
+        $('#tweets-container').empty();
+        getTweetsAndRender();
+      });
   });
 });
 
-
-$('.timeline').html(timeago.format(new Date()));
-console.log(timeago.format(new Date()));
