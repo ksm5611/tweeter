@@ -45,7 +45,7 @@
     <main class="container">
       <section class="new-tweet">
         <!-- <h2>Compose Tweet</h2> -->
-        <form>
+        <form id="form-submit">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text" rows="1" placeholder="What are you humming about?"></textarea>
           <div class="space">
@@ -53,7 +53,7 @@
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
-        <h5 class="main-header">
+        <!-- <h5 class="main-header">
           <div class="box-top">
             <div>
               <i class="fas fa-cat"></i>
@@ -71,8 +71,9 @@
               <i class="fas fa-heart status"></i>
             </div>
           </div>
-        </h5>
+        </h5> -->
       </section>
+      <div id="tweets-container"></div>
     </main>
   </body>
 </html> 
