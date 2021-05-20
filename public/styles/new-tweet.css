@@ -1,3 +1,9 @@
+#alert-error {
+  display: none;
+  background-color: crimson;
+  color: #d4d4d4;
+}
+
 #form-submit-container {
   margin-top: 30px;
 }
@@ -10,6 +16,7 @@
   border-bottom: solid;
   resize: none;
   outline: none;
+  margin-top: 10px;
   /* margin-top: 32px; */
 }
 
@@ -86,11 +93,11 @@ i.status:hover {
   color: gold;
 }
 
-.main-header:hover {
+.single-tweet:hover {
   box-shadow: 3px 5px #d4d4d4;
 }
 
-.main-header:hover #handler {
+.single-tweet:hover #handler {
   opacity: 100%;
 }
 
