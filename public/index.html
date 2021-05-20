@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
 
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- App CSS -->
@@ -25,29 +26,34 @@
     <script type="text/javascript" src="/scripts/client.js"></script>
   </head>
 
-  <body>
+  <body class="main-content">
     <!-- Top nav bar (fixed) -->
-    <nav class="fixed-nav">
+    <nav class="fixed-nav heading-section">
       <span class="logo">tweeter</span>
       <span class="adjust"> <span> <b>Write</b> a new tweet</span> <i class="fas fa-angle-double-down arrow"></i></span>
     </nav>
     
-    <header class="header-container">
+    <header class="header-container feature-section">
       <div class="imgTag">
           <img src="/images/profile-hex.png">
       </div>
       <br>
-      <div class="imgTag">
+      <div class="imgTag name-tag">
           <h2>Your Name</h2>
       </div>
-  </header>
+    </header>
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <section>
-        <!-- <h2>Compose Tweet</h2> -->
-        <form id="form-submit-container">
+      <section class="new-tweet">
+        <!-- <h3>Compose Tweet</h3> -->
+        <div role="alert" id="alert-error">
+          <span>
+            <p id="error-message"></p>
+          </span>
+        </div>
+        <form id="form-submit-container" class="submit-section">
           <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text" rows="2" ></textarea>
+          <textarea name="text" id="tweet-text" rows="2"></textarea>
           <div class="space">
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
