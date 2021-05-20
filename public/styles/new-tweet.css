@@ -28,6 +28,7 @@ button {
   padding-right: 20px;
   margin-top: 30px;
   margin-bottom: 30px;
+  word-break: break-word;
 }
 
 .box-top {
