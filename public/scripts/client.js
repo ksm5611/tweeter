@@ -7,32 +7,21 @@
 
 $(document).ready(function() {
   
-  const tweetData = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
+  /*
+  create tweet html element
+  params Tweet
+  Tweet: {
+      user: {
+        avatars: string,
+        handle: string,
+        name: string
       },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1621224103078
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1621310503078
-    }
-  ];
-
-
+      content: {
+        text: string
+      }
+      create_at: Date
+    };
+   */
   const createTweetElement = function(tweet) {
     let $tweet = $(`<article class="single-tweet">
     <div class="box-top">
@@ -42,7 +31,7 @@ $(document).ready(function() {
       </div>
         <span id="handler">${tweet.user.handle}</span>
     </div>
-    <p>${tweet.content.text}</p>
+    <p>${escape(tweet.content.text)}</p>
     <hr class="underline"/>
     <div class="bottom-container">
       <span class="timeline">
@@ -58,6 +47,29 @@ $(document).ready(function() {
     return $tweet;
   };
 
+
+  const escape = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+
+
+  /*
+   add tweet element to tweets-container
+   params: [Tweet] Tweet: {
+      user: {
+        avatars: string,
+        handle: string,
+        name: string
+      },
+      content: {
+        text: string
+      }
+      create_at: Date
+    };
+  */
   const renderTweets = function(tweets) {
     // loops through tweets
     // calls createTweetElement for each tweet
@@ -71,20 +83,23 @@ $(document).ready(function() {
     });
   };
   
-  // renderTweets(tweetData);
+  // fetch tweet to respose from server
   const getTweetsAndRender = function() {
     $.ajax('http://localhost:8080/tweets', {method: 'GET'})
       .then((response) => {
-      // console.log(response)
         renderTweets(response);
       });
   };
 
   getTweetsAndRender();
 
+  // send request to server to create a new tweet and render the tweet elements with the new tweet
   $('#form-submit').on('submit', function(event) {
     event.preventDefault();
-    // console.log($(this).serialize());
+    const wanringMessage = $('#tweet-text').val().length;
+    if (wanringMessage > 140 || wanringMessage === 0) {
+      return alert('error');
+    }
     $.ajax('http://localhost:8080/tweets', {method: 'POST', data: $(this).serialize()})
       .then(() => {
         $('#form-submit')[0].reset();
@@ -92,5 +107,6 @@ $(document).ready(function() {
         getTweetsAndRender();
       });
   });
+  
 });
 
