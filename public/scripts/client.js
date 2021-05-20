@@ -47,14 +47,12 @@ $(document).ready(function() {
     return $tweet;
   };
 
-
+// Use an escape function to prevent XSS
   const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
-
-
 
   /*
    add tweet element to tweets-container
@@ -71,15 +69,9 @@ $(document).ready(function() {
     };
   */
   const renderTweets = function(tweets) {
-    // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
     tweets.forEach((tweet) => {
       const $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
-      // if (time passed) {
-      //   will remove history
-      // }
     });
   };
   
@@ -94,19 +86,26 @@ $(document).ready(function() {
   getTweetsAndRender();
 
   // send request to server to create a new tweet and render the tweet elements with the new tweet
-  $('#form-submit').on('submit', function(event) {
+  $('#form-submit-container').on('submit', function(event) {
     event.preventDefault();
     const wanringMessage = $('#tweet-text').val().length;
-    if (wanringMessage > 140 || wanringMessage === 0) {
-      return alert('error');
+    if (wanringMessage > 140) {
+      $('#error-message').text('Too Long. Character limit is 140.');
+      $('#alert-error').slideDown();
+      return;
+    } else if (wanringMessage === 0) {
+      $('#error-message').text('Message is required.');
+      $('#alert-error').slideDown();
+      return;
     }
+
     $.ajax('http://localhost:8080/tweets', {method: 'POST', data: $(this).serialize()})
       .then(() => {
-        $('#form-submit')[0].reset();
+        $('#form-submit-container')[0].reset();
         $('#tweets-container').empty();
         getTweetsAndRender();
+        $('#alert-error').slideUp();
       });
   });
-  
 });
 
