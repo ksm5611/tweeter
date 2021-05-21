@@ -30,7 +30,8 @@
     <!-- Top nav bar (fixed) -->
     <nav class="fixed-nav heading-section">
       <span class="logo">tweeter</span>
-      <span class="adjust"> <span> <b>Write</b> a new tweet</span> <i class="fas fa-angle-double-down arrow"></i></span>
+      <!-- <span class="adjust"> <span> <b>Write</b> a new tweet</span> <i class="fas fa-angle-double-down arrow"></i></span> -->
+      <span id="toggle-tweet-btn" class="adjust"> <span> <b>Write</b> a new tweet</span> <i class="fas fa-angle-double-down arrow"></i></span>
     </nav>
     
     <header class="header-container feature-section">
@@ -44,13 +45,14 @@
     </header>
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <i class="fas fa-arrow-alt-circle-up back-to-top"></i>
       <section class="new-tweet">
         <div role="alert" id="alert-error">
           <span>
             <p id="error-message"></p>
           </span>
         </div>
-        <form id="form-submit-container" class="submit-section">
+        <form id="form-submit-container" >
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text" rows="2"></textarea>
           <div class="space">
