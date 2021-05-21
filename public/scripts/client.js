@@ -23,6 +23,8 @@ $(document).ready(function() {
     };
    */
   const createTweetElement = function(tweet) {
+    console.log("tweet", tweet);
+    console.log("current", Date.now());
     let $tweet = $(`<article class="single-tweet">
     <div class="box-top">
       <div class="img">
