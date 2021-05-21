@@ -90,6 +90,10 @@ button {
   opacity: 50%;
 }
 
+#tweets-container {
+  min-width: 600px;
+}
+
 .header-container {
   margin-top: 120px;
 }
@@ -105,3 +109,19 @@ i.status:hover {
 .single-tweet:hover #handler {
   opacity: 100%;
 }
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  font-size: 50px;
+  color: saddlebrown;
+ }
+ 
+ .back-to-top:hover{
+  opacity: 0.7;
+ }
