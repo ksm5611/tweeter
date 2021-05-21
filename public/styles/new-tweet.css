@@ -21,6 +21,7 @@
 
 button {
   font-family: 'Bungee';
+  cursor: pointer;
 }
 
 .space {
@@ -82,10 +83,15 @@ button {
   margin-bottom: 10px;
   font-size: small;
   color: blue;
+  cursor: pointer;
 }
 
 #handler {
   opacity: 50%;
+}
+
+.header-container {
+  margin-top: 120px;
 }
 
 i.status:hover {
@@ -98,14 +104,4 @@ i.status:hover {
 
 .single-tweet:hover #handler {
   opacity: 100%;
-}
-
-.fixed-nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-}
-
-.header-container {
-  margin-top: 120px;
 }
