@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function () {
+$(document).ready(function() {
   /*
   create tweet html element
   params Tweet
@@ -20,11 +20,11 @@ $(document).ready(function () {
       create_at: Date
     };
    */
-  const createTweetElement = function (tweet) {
+  const createTweetElement = function(tweet) {
     let $tweet = $(`<article class="single-tweet">
     <div class="box-top">
-      <div class="img">
-        <img id="img-size" src="${tweet.user.avatars}" />
+      <div class="avatar">
+        <img class="avatar-size" src="${tweet.user.avatars}" alt="avatar" />
         <tag>${tweet.user.name}</tag> 
       </div>
         <span id="handler">${tweet.user.handle}</span>
@@ -46,7 +46,8 @@ $(document).ready(function () {
   };
 
   // Use an escape function to prevent XSS
-  const escape = function (str) {
+  // params str: string
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
@@ -66,15 +67,16 @@ $(document).ready(function () {
       create_at: Date
     };
   */
-  const renderTweets = function (tweets) {
+  const renderTweets = function(tweets) {
     tweets.forEach((tweet) => {
       const $tweet = createTweetElement(tweet);
       $("#tweets-container").prepend($tweet);
     });
+    $('.back-to-top').hide();
   };
 
   // fetch tweet to respose from server
-  const getTweetsAndRender = function () {
+  const getTweetsAndRender = function() {
     $.ajax("http://localhost:8080/tweets", { method: "GET" }).then(
       (response) => {
         renderTweets(response);
@@ -85,9 +87,10 @@ $(document).ready(function () {
   getTweetsAndRender();
 
   // send request to server to create a new tweet and render the tweet elements with the new tweet
-  $("#form-submit-container").on("submit", function (event) {
+  $("#form-submit-container").on("submit", function(event) {
     event.preventDefault();
-    const wanringMessage = $("#tweet-text").val().length;
+    // prevent upload empty space
+    const wanringMessage = $("#tweet-text").val().trim().length;
     if (wanringMessage > 140) {
       $("#error-message").text("Too Long. Character limit is 140.");
       $("#alert-error").slideDown();
@@ -104,6 +107,7 @@ $(document).ready(function () {
     }).then(() => {
       $("#form-submit-container")[0].reset();
       $("#tweets-container").empty();
+      $('.counter').css('color', '#545149');
       getTweetsAndRender();
       $("#alert-error").slideUp();
     });
@@ -118,21 +122,5 @@ $(document).ready(function () {
       $("#form-submit-container").slideDown();
       $("#tweet-text").focus();
     }
-  });
-
-  //Check to see if the window is top if not then display button
-  $(window).scroll(function() {
-    const showAfter = 100;
-    if ($(this).scrollTop() > showAfter) {
-      $(".back-to-top").fadeIn();
-    } else {
-      $(".back-to-top").fadeOut();
-    }
-  });
-
-  //Click event to scroll to top
-  $(".back-to-top").click(function() {
-    $("html, body").animate({ scrollTop: 0 }, 800);
-    return false;
   });
 });
