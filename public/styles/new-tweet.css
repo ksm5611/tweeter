@@ -19,8 +19,8 @@
   margin-top: 10px;
 }
 
-button {
-  font-family: 'Bungee';
+.submit-btn {
+  font-family: 'Bungee', sans-serif;
   cursor: pointer;
 }
 
@@ -32,7 +32,7 @@ button {
 
 
 .counter {
-  font-family: 'Bungee';
+  font-family: 'Bungee', sans-serif;
 }
 
 .single-tweet {
@@ -51,12 +51,12 @@ button {
   margin-top: 15px;
 }
 
-.img {
+.avatar {
   display: flex;
   align-items: center;
 }
 
-#img-size {
+.avatar-size {
   width: 50px;
   margin-right: 10px;
 }
@@ -82,7 +82,7 @@ button {
 .status {
   margin-bottom: 10px;
   font-size: small;
-  color: blue;
+  color: 	#0000FF;
   cursor: pointer;
 }
 
@@ -99,7 +99,7 @@ button {
 }
 
 i.status:hover {
-  color: gold;
+  color: 	#D7BE69;
 }
 
 .single-tweet:hover {
@@ -119,7 +119,7 @@ i.status:hover {
   text-decoration: none;
   transition: opacity 0.2s ease-out;
   font-size: 50px;
-  color: saddlebrown;
+  color: #8b4513;
  }
  
  .back-to-top:hover{
