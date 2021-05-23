@@ -90,12 +90,12 @@ $(document).ready(function() {
   $("#form-submit-container").on("submit", function(event) {
     event.preventDefault();
     // prevent upload empty space
-    const wanringMessage = $("#tweet-text").val().trim().length;
-    if (wanringMessage > 140) {
+    const warningMessage = $("#tweet-text").val().trim().length;
+    if (warningMessage > 140) {
       $("#error-message").text("Too Long. Character limit is 140.");
       $("#alert-error").slideDown();
       return;
-    } else if (wanringMessage === 0) {
+    } else if (warningMessage === 0) {
       $("#error-message").text("Message is required.");
       $("#alert-error").slideDown();
       return;
