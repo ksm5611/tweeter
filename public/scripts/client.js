@@ -7,18 +7,7 @@
 $(document).ready(function() {
   /*
   create tweet html element
-  params Tweet
-  Tweet: {
-      user: {
-        avatars: string,
-        handle: string,
-        name: string
-      },
-      content: {
-        text: string
-      }
-      create_at: Date
-    };
+  params Tweet: object
    */
   const createTweetElement = function(tweet) {
     let $tweet = $(`<article class="single-tweet">
@@ -55,17 +44,7 @@ $(document).ready(function() {
 
   /*
    add tweet element to tweets-container
-   params: [Tweet] Tweet: {
-      user: {
-        avatars: string,
-        handle: string,
-        name: string
-      },
-      content: {
-        text: string
-      }
-      create_at: Date
-    };
+   params: [Tweet] object
   */
   const renderTweets = function(tweets) {
     tweets.forEach((tweet) => {
